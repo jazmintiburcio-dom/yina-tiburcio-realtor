@@ -20,6 +20,7 @@ export default function Nav() {
   const { locale, setLocale, t } = useI18n()
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
+  const [menuH, setMenuH] = useState(0)
   const pathname = usePathname()
 
   useEffect(() => {
@@ -29,17 +30,25 @@ export default function Nav() {
   }, [])
 
   useEffect(() => {
+    const updateH = () => setMenuH(window.innerHeight)
+    updateH()
+    window.addEventListener('resize', updateH)
+    return () => window.removeEventListener('resize', updateH)
+  }, [])
+
+  useEffect(() => {
     if (menuOpen) document.body.style.overflow = 'hidden'
     else document.body.style.overflow = ''
     return () => { document.body.style.overflow = '' }
   }, [menuOpen])
 
-  /* All 4 nav links — labels come from i18n so EN toggle translates everything */
+  /* All 5 nav links */
   const links = [
-    { href: '/#sobre-yina', label: t.nav.sobreMi,    anchor: true },
-    { href: '/servicios',   label: t.nav.servicios,  anchor: false },
+    { href: '/',            label: t.nav.inicio,      anchor: false },
+    { href: '/#sobre-yina', label: t.nav.sobreMi,     anchor: true  },
+    { href: '/servicios',   label: t.nav.servicios,   anchor: false },
     { href: '/propiedades', label: t.nav.propiedades, anchor: false },
-    { href: '/contacto',   label: t.nav.contacto,   anchor: false },
+    { href: '/contacto',   label: t.nav.contacto,    anchor: false },
   ]
 
   const pillBase: React.CSSProperties = {
@@ -120,15 +129,55 @@ export default function Nav() {
       </nav>
 
       {/* Mobile menu */}
-      <div className={`mobile-menu${menuOpen ? ' open' : ''}`} role="dialog" aria-modal="true">
-        <button className="absolute top-5 right-6 bg-transparent border-none text-[var(--crema)] text-3xl cursor-pointer leading-none" onClick={() => setMenuOpen(false)} aria-label={t.nav.close}>×</button>
+      <div
+        className={`mobile-menu${menuOpen ? ' open' : ''}`}
+        role="dialog"
+        aria-modal="true"
+        style={{
+          position: 'fixed',
+          top: 0, left: 0,
+          width: '100vw',
+          height: '100vh',
+          background: 'var(--ceiba)',
+          zIndex: 300,
+          display: menuOpen ? 'flex' : 'none',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          gap: 20,
+          paddingTop: 72,
+          paddingBottom: 48,
+          overflow: 'auto',
+        }}
+      >
+        {/* Close button — inline styles, no Tailwind */}
+        <button
+          onClick={() => setMenuOpen(false)}
+          aria-label={t.nav.close}
+          style={{ position: 'absolute', top: 20, right: 24, background: 'transparent', border: 'none', color: 'var(--crema)', fontSize: 32, cursor: 'pointer', lineHeight: 1, padding: '4px 8px' }}
+        >×</button>
+
         {links.map(l => (
-          <a key={l.href} href={l.href} className="nav-link" style={{ fontSize: 14, letterSpacing: 3, color: 'rgba(251,246,236,0.75)' }} onClick={() => setMenuOpen(false)}>
+          <a
+            key={l.href}
+            href={l.href}
+            style={{ fontFamily: 'var(--sans)', fontSize: 13, fontWeight: 600, letterSpacing: '3px', textTransform: 'uppercase', color: 'rgba(251,246,236,0.8)', textDecoration: 'none', padding: '6px 0' }}
+            onClick={() => setMenuOpen(false)}
+          >
             {l.label}
           </a>
         ))}
-        <a href="https://wa.me/14016025102" target="_blank" rel="noopener noreferrer" className="btn btn-sol mt-4" onClick={() => setMenuOpen(false)}>
-          <svg viewBox="0 0 24 24" className="w-4 h-4 fill-current"><path d={WA_PATH} /></svg>
+
+        <div style={{ width: 40, height: 1, background: 'rgba(251,246,236,0.15)', margin: '8px 0' }} />
+
+        <a
+          href="https://wa.me/14016025102"
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={() => setMenuOpen(false)}
+          style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: 'var(--sol)', color: 'var(--tierra)', fontFamily: 'var(--sans)', fontSize: 10.5, fontWeight: 600, letterSpacing: '2px', textTransform: 'uppercase', padding: '14px 28px', borderRadius: 8, textDecoration: 'none', marginTop: 4 }}
+        >
+          <svg viewBox="0 0 24 24" style={{ width: 16, height: 16, fill: 'currentColor' }}><path d={WA_PATH} /></svg>
           {t.nav.wa}
         </a>
       </div>

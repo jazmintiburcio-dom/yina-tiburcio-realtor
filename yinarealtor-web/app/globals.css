@@ -28,7 +28,7 @@
   --gris-light: #D4CEC4;
   --serif: 'Cormorant Garamond', serif;
   --sans: 'DM Sans', sans-serif;
-  --nav-h: 72px;
+  --nav-h: 60px;
   --motion-spring: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -220,6 +220,9 @@ nav.site-nav.scrolled { box-shadow: 0 4px 24px rgba(42,31,14,.08); }
   align-items: center;
   background: var(--ceiba-dark);
 }
+@media (max-width: 767px) {
+  .hero-section { min-height: 50vh; }
+}
 .hero-overlay {
   position: absolute;
   inset: 0;
@@ -244,7 +247,10 @@ nav.site-nav.scrolled { box-shadow: 0 4px 24px rgba(42,31,14,.08); }
 
 /* SECTIONS */
 .section {
-  padding: clamp(56px, 8vw, 96px) clamp(24px, 5vw, 64px);
+  padding: clamp(40px, 8vw, 96px) clamp(20px, 5vw, 64px);
+}
+@media (max-width: 767px) {
+  .section { padding: 40px 20px; }
 }
 .section-inner { max-width: 1280px; margin: 0 auto; }
 .s-head { margin-bottom: 48px; }
@@ -322,18 +328,19 @@ nav.site-nav.scrolled { box-shadow: 0 4px 24px rgba(42,31,14,.08); }
 /* MOBILE MENU */
 .mobile-menu {
   position: fixed;
-  inset: 0;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
   background: var(--ceiba);
   z-index: 300;
-  display: flex;
+  display: none;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 28px;
-  transform: translateX(100%);
-  transition: transform 0.4s var(--motion-spring);
+  gap: 24px;
+  overflow: auto;
 }
-.mobile-menu.open { transform: translateX(0); }
+.mobile-menu.open { display: flex; }
 
 /* PROCESS TIMELINE */
 .process-step {
@@ -395,7 +402,11 @@ nav.site-nav.scrolled { box-shadow: 0 4px 24px rgba(42,31,14,.08); }
 /* FOOTER */
 footer.site-footer {
   background: var(--ceiba-dark);
-  padding: clamp(40px, 6vw, 60px) clamp(24px, 5vw, 64px) 24px;
+  padding: clamp(40px, 6vw, 60px) clamp(20px, 5vw, 64px) 24px;
+  overflow: visible;
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
 }
 .social-link {
   width: 34px;
@@ -450,4 +461,15 @@ footer.site-footer {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
   }
+}
+
+/* SERVICE CARD — mobile: show desc, hide ALL bullets until expanded */
+.service-readmore { display: none; }
+@media (max-width: 767px) {
+  /* desc (primer párrafo) VISIBLE en mobile */
+  .service-desc { display: block; }
+  /* bullets todos ocultos en mobile hasta expandir */
+  .service-bullet { display: none !important; }
+  .service-bullet.expanded { display: flex !important; }
+  .service-readmore { display: inline-block; }
 }

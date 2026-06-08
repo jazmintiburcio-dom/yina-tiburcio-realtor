@@ -6,9 +6,38 @@ import Footer from '@/components/Footer'
 import WhatsAppButton from '@/components/WhatsAppButton'
 import RevealObserver from '@/components/RevealObserver'
 
+const SITE_URL = 'https://yinatiburciorealtor.com'
+
 export const metadata: Metadata = {
   title: 'Yina Tiburcio · Realtor® · Rhode Island',
   description: 'Agente inmobiliaria bilingüe en Rhode Island. Compra, vende y renta con Yina Tiburcio. Hablamos español.',
+  icons: {
+    icon: '/image/favicon.png',
+    apple: '/image/favicon.png',
+  },
+  metadataBase: new URL(SITE_URL),
+  openGraph: {
+    type: 'website',
+    url: SITE_URL,
+      locale: 'es_US',
+    title: 'Yina Tiburcio · Realtor® · Rhode Island',
+    description: 'Tu Realtor bilingüe en Rhode Island. Compra, vende y renta con respaldo profesional y atención personalizada en español.',
+    siteName: 'Yina Tiburcio Real Estate',
+    images: [
+      {
+        url: '/images/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'Yina Tiburcio · Realtor® · Rhode Island',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Yina Tiburcio · Realtor® · Rhode Island',
+    description: 'Tu Realtor bilingüe en Rhode Island. Compra, vende y renta con respaldo profesional y atención personalizada en español.',
+    images: ['/images/og-image.png'],
+  },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

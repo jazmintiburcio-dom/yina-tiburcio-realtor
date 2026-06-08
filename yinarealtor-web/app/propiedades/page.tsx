@@ -2,7 +2,7 @@
 import { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { Bed, Bath, Car, MapPin, ChevronDown, ChevronUp } from 'lucide-react'
+import { Bed, Bath, Car, MapPin } from 'lucide-react'
 import { useI18n } from '@/lib/i18n'
 import { useIsMobile } from '@/lib/useIsMobile'
 import { properties } from '@/lib/properties'
@@ -239,60 +239,74 @@ export default function Propiedades() {
           aria-hidden="true"
         />
 
-        {/* Contenido */}
-        <div style={{ position: 'relative', zIndex: 3, width: '100%', maxWidth: 1280, margin: '0 auto', padding: 'clamp(48px,7vw,80px) clamp(24px,5vw,40px)' }}>
-          <div className="reveal" style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 20 }}>
-            <span style={{ display: 'block', width: 28, height: 1, background: '#F5D13A' }} aria-hidden="true" />
-            <span style={{ fontSize: 10, fontWeight: 600, letterSpacing: '3px', textTransform: 'uppercase', color: '#F5D13A', fontFamily: 'var(--sans)' }}>
-              {c.hero.eyebrow}
-            </span>
-          </div>
-
-          <h1
-            className="reveal d1"
+        {/* Contenido — panel glassmorphism a la derecha */}
+        <div style={{ position: 'relative', zIndex: 3, width: '100%', maxWidth: 1280, margin: '0 auto', padding: 'clamp(48px,7vw,80px) clamp(24px,5vw,40px)', display: 'flex', justifyContent: isMobile ? 'center' : 'flex-end', alignItems: 'center', minHeight: '68vh' }}>
+          <div
+            className="reveal"
             style={{
-              fontFamily: 'var(--serif)', fontWeight: 300,
-              fontSize: 'clamp(38px,5.5vw,70px)', lineHeight: 1.02,
-              color: '#FBF6EC', maxWidth: 700, margin: '0 0 20px',
-              textShadow: '0 2px 20px rgba(42,31,14,0.3)',
+              background: 'rgba(251,246,236,0.15)',
+              backdropFilter: 'blur(14px)',
+              WebkitBackdropFilter: 'blur(14px)',
+              border: '1px solid rgba(255,255,255,0.25)',
+              borderRadius: 20,
+              padding: isMobile ? 'clamp(24px,5vw,32px)' : 'clamp(28px,4vw,48px)',
+              maxWidth: isMobile ? '100%' : 520,
+              width: isMobile ? '100%' : undefined,
             }}
           >
-            {c.hero.h1}{' '}
-            <em style={{ color: '#F5D13A', fontStyle: 'italic' }}>{c.hero.h1em}</em>
-          </h1>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 20 }}>
+              <span style={{ display: 'block', width: 28, height: 1, background: '#F5D13A' }} aria-hidden="true" />
+              <span style={{ fontSize: 10, fontWeight: 600, letterSpacing: '3px', textTransform: 'uppercase', color: '#F5D13A', fontFamily: 'var(--sans)' }}>
+                {c.hero.eyebrow}
+              </span>
+            </div>
 
-          <p
-            className="reveal d2"
-            style={{ fontSize: 15, lineHeight: 1.7, color: 'rgba(251,246,236,0.9)', maxWidth: 520, margin: '0 0 10px', fontFamily: 'var(--sans)', textShadow: '0 1px 8px rgba(42,31,14,0.4)' }}
-          >
-            {c.hero.body}
-          </p>
-          <p
-            className="reveal d3"
-            style={{ fontSize: 14, lineHeight: 1.75, color: 'rgba(251,246,236,0.75)', maxWidth: 520, margin: '0 0 32px', fontFamily: 'var(--sans)', textShadow: '0 1px 8px rgba(42,31,14,0.4)' }}
-          >
-            {c.hero.sub}
-          </p>
+            <h1
+              className="reveal d1"
+              style={{
+                fontFamily: 'var(--serif)', fontWeight: 300,
+                fontSize: 'clamp(30px,4vw,54px)', lineHeight: 1.06,
+                color: '#FBF6EC', margin: '0 0 16px',
+                textShadow: '0 2px 20px rgba(42,31,14,0.3)',
+              }}
+            >
+              {c.hero.h1}{' '}
+              <em style={{ color: '#F5D13A', fontStyle: 'italic' }}>{c.hero.h1em}</em>
+            </h1>
 
-          <div className="reveal d4" style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
-            <a
-              href="#propiedades"
-              style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: '#F5D13A', color: '#2A1F0E', fontSize: 11, fontWeight: 700, letterSpacing: '1.5px', textTransform: 'uppercase', padding: '13px 24px', borderRadius: 28, textDecoration: 'none', transition: 'transform 0.2s, box-shadow 0.2s', boxShadow: '0 6px 24px rgba(245,209,58,0.4)' }}
-              onMouseEnter={e => { const el = e.currentTarget; el.style.transform = 'translateY(-2px)'; el.style.boxShadow = '0 10px 36px rgba(245,209,58,0.5)' }}
-              onMouseLeave={e => { const el = e.currentTarget; el.style.transform = ''; el.style.boxShadow = '0 6px 24px rgba(245,209,58,0.4)' }}
+            <p
+              className="reveal d2"
+              style={{ fontSize: 14, lineHeight: 1.7, color: 'rgba(251,246,236,0.9)', margin: '0 0 10px', fontFamily: 'var(--sans)' }}
             >
-              {c.hero.ctaPrimary} ↓
-            </a>
-            <a
-              href={waConsulta}
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{ display: 'inline-flex', alignItems: 'center', gap: 8, border: '1.5px solid rgba(251,246,236,0.7)', color: '#FBF6EC', fontSize: 11, fontWeight: 600, letterSpacing: '1.5px', textTransform: 'uppercase', padding: '13px 24px', borderRadius: 28, textDecoration: 'none', transition: 'all 0.2s', background: 'transparent' }}
-              onMouseEnter={e => { const el = e.currentTarget; el.style.background = 'rgba(251,246,236,0.15)'; el.style.borderColor = '#FBF6EC' }}
-              onMouseLeave={e => { const el = e.currentTarget; el.style.background = 'transparent'; el.style.borderColor = 'rgba(251,246,236,0.7)' }}
+              {c.hero.body}
+            </p>
+            <p
+              className="reveal d3"
+              style={{ fontSize: 13, lineHeight: 1.75, color: 'rgba(251,246,236,0.75)', margin: '0 0 28px', fontFamily: 'var(--sans)' }}
             >
-              <WaIcon size={14} /> {c.hero.ctaSecondary}
-            </a>
+              {c.hero.sub}
+            </p>
+
+            <div className="reveal d4" style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
+              <a
+                href="#propiedades"
+                style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: '#F5D13A', color: '#2A1F0E', fontSize: 11, fontWeight: 700, letterSpacing: '1.5px', textTransform: 'uppercase', padding: '13px 24px', borderRadius: 28, textDecoration: 'none', transition: 'transform 0.2s, box-shadow 0.2s', boxShadow: '0 6px 24px rgba(245,209,58,0.4)' }}
+                onMouseEnter={e => { const el = e.currentTarget; el.style.transform = 'translateY(-2px)'; el.style.boxShadow = '0 10px 36px rgba(245,209,58,0.5)' }}
+                onMouseLeave={e => { const el = e.currentTarget; el.style.transform = ''; el.style.boxShadow = '0 6px 24px rgba(245,209,58,0.4)' }}
+              >
+                {c.hero.ctaPrimary} ↓
+              </a>
+              <a
+                href={waConsulta}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ display: 'inline-flex', alignItems: 'center', gap: 8, border: '1.5px solid rgba(251,246,236,0.7)', color: '#FBF6EC', fontSize: 11, fontWeight: 600, letterSpacing: '1.5px', textTransform: 'uppercase', padding: '13px 24px', borderRadius: 28, textDecoration: 'none', transition: 'all 0.2s', background: 'transparent' }}
+                onMouseEnter={e => { const el = e.currentTarget; el.style.background = 'rgba(251,246,236,0.15)'; el.style.borderColor = '#FBF6EC' }}
+                onMouseLeave={e => { const el = e.currentTarget; el.style.background = 'transparent'; el.style.borderColor = 'rgba(251,246,236,0.7)' }}
+              >
+                <WaIcon size={14} /> {c.hero.ctaSecondary}
+              </a>
+            </div>
           </div>
         </div>
       </section>
@@ -313,7 +327,7 @@ export default function Propiedades() {
 
           {/* Sticky filter tabs */}
           <div style={{ position: 'sticky', top: 'var(--nav-h)', zIndex: 100, background: 'var(--off-white)', paddingBottom: 24, paddingTop: 8 }}>
-            <div style={{ display: 'flex', gap: 3, background: 'var(--arena)', padding: 3, borderRadius: 8, width: 'fit-content' }}>
+            <div style={{ display: 'flex', gap: 3, background: 'var(--arena)', padding: 3, borderRadius: 8, width: isMobile ? '100%' : 'fit-content' }}>
               {([
                 ['all', c.filters.all],
                 ['comprar', c.filters.comprar],
@@ -323,7 +337,7 @@ export default function Propiedades() {
                   key={val}
                   className={`filter-tab${activeTab === val ? ' active' : ''}`}
                   onClick={() => setActiveTab(val)}
-                  style={{ transition: 'all 0.2s' }}
+                  style={{ transition: 'all 0.2s', flex: isMobile ? 1 : 'none', textAlign: 'center' }}
                 >
                   {label}
                 </button>
@@ -392,22 +406,18 @@ export default function Propiedades() {
             <h2>{c.faq.h2} <em>{c.faq.h2em}</em></h2>
           </div>
 
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
             {c.faq.items.map((faq, i) => (
-              <div
-                key={i}
-                className={`faq-item reveal d${(i % 4) + 1}${openFaq === i ? ' open' : ''}`}
-              >
+              <div key={i} className={`faq-item${openFaq === i ? ' open' : ''}`}>
                 <button
                   className="faq-q"
-                  onClick={() => setOpenFaq(openFaq === i ? null : i)}
+                  onClick={() => setOpenFaq(i === openFaq ? null : i)}
                   aria-expanded={openFaq === i}
                 >
                   <span>{faq.q}</span>
-                  {openFaq === i
-                    ? <ChevronUp size={17} color="var(--sol-dark)" strokeWidth={2} />
-                    : <ChevronDown size={17} color="var(--sol-dark)" strokeWidth={2} />
-                  }
+                  <svg viewBox="0 0 24 24" style={{ width: 17, height: 17, stroke: 'var(--sol-dark)', fill: 'none', strokeWidth: 2, transition: 'transform .3s', transform: openFaq === i ? 'rotate(45deg)' : 'rotate(0)', flexShrink: 0 }}>
+                    <line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" />
+                  </svg>
                 </button>
                 <div className="faq-a">
                   <div className="faq-a-inner">{faq.a}</div>
@@ -503,7 +513,7 @@ function PropCard({
 }) {
   return (
     <article
-      className={`prop-card reveal d${delay}`}
+      className="prop-card"
       style={{ transition: 'transform 0.22s, box-shadow 0.22s' }}
       onMouseEnter={e => { const el = e.currentTarget; el.style.transform = 'translateY(-4px)'; el.style.boxShadow = '0 16px 48px rgba(42,31,14,0.12)' }}
       onMouseLeave={e => { const el = e.currentTarget; el.style.transform = ''; el.style.boxShadow = '' }}

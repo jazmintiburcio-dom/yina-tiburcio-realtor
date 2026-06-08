@@ -40,6 +40,7 @@ export function I18nProvider({ children }: { children: React.ReactNode }) {
 const content = {
   es: {
     nav: {
+      inicio: 'Inicio',
       sobreMi: 'Sobre Mí',
       servicios: 'Servicios',
       propiedades: 'Propiedades',
@@ -187,6 +188,7 @@ const content = {
   },
   en: {
     nav: {
+      inicio: 'Home',
       sobreMi: 'About Me',
       servicios: 'Services',
       propiedades: 'Properties',

@@ -116,6 +116,7 @@ const PAGE = {
         'Análisis de tu historial de crédito para aplicaciones inmobiliarias',
         'Orientación sobre préstamos FHA, convencionales y opciones de asistencia',
         'Estructuración de metas financieras a corto y mediano plazo',
+        'Estrategias para mejorar tu puntaje crediticio antes de aplicar',
       ],
       cta: 'Consulta Gratis',
     },
@@ -248,6 +249,7 @@ const PAGE = {
         'Analysis of your credit history for real estate applications',
         'Guidance on FHA, conventional loans, and assistance options',
         'Structuring short and medium-term financial goals',
+        'Strategies to improve your credit score before applying',
       ],
       cta: 'Free Consultation',
     },
@@ -303,7 +305,7 @@ export default function Servicios() {
       <section
         style={{
           position: 'relative',
-          minHeight: '92vh',
+          minHeight: isMobile ? 'auto' : '92vh',
           marginTop: 'calc(-1 * var(--nav-h))',
           paddingTop: 'var(--nav-h)',
           overflow: 'hidden',
@@ -339,6 +341,7 @@ export default function Servicios() {
                   src="/images/Services/Services_Heroe_1.png"
                   alt="Yina Tiburcio con cliente revisando documentos"
                   fill
+                  priority
                   style={{ objectFit: 'cover', objectPosition: 'center top' }}
                   sizes="380px"
                   priority
@@ -389,6 +392,19 @@ export default function Servicios() {
                   {c.hero.btnProps} →
                 </Link>
               </div>
+
+              {/* Imagen hero visible solo en mobile — después de los botones */}
+              {isMobile && (
+                <div style={{ position: 'relative', width: '100%', maxWidth: 380, margin: '12px auto 0', aspectRatio: '3/4' }}>
+                  <Image
+                    src="/images/Services/Services_Heroe_1.png"
+                    alt="Yina Tiburcio con cliente revisando documentos"
+                    fill
+                    style={{ objectFit: 'contain', objectPosition: 'center bottom' }}
+                    sizes="100vw"
+                  />
+                </div>
+              )}
             </div>
 
             {/* Col 3 — Foto secundaria (más pequeña) + badges */}
@@ -457,7 +473,7 @@ export default function Servicios() {
       </div>
 
       {/* ── INTRO QUOTE ──────────────────────────────────────── */}
-      <section className="section" style={{ background: 'var(--off-white)', paddingTop: 64, paddingBottom: 48 }}>
+      <section className="section" style={{ background: 'var(--lino)', paddingTop: 64, paddingBottom: 48 }}>
         <div className="section-inner">
           <div style={{ maxWidth: 760, margin: '0 auto', textAlign: 'center' }}>
             <div className="reveal" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 12, marginBottom: 20 }}>
@@ -477,7 +493,7 @@ export default function Servicios() {
         label={c.groupB.label}
         services={c.groupB.services}
         accent="#4A5E2A"
-        bgs={['#E0EBC8', '#F0F5E8']}
+        bgs={['#FFFFFF', '#FFFFFF']}
         sectionBg="var(--crema)"
         locale={locale}
         waBase={WA}
@@ -488,7 +504,7 @@ export default function Servicios() {
         label={c.groupA.label}
         services={c.groupA.services}
         accent="#C4844A"
-        bgs={['#F5EDD8', '#F8E8D8']}
+        bgs={['#FFFFFF', '#FFFFFF']}
         sectionBg="var(--lino)"
         locale={locale}
         waBase={WA}
@@ -496,7 +512,7 @@ export default function Servicios() {
       />
 
       {/* ── EDUCACIÓN FINANCIERA ─────────────────────────────── */}
-      <section style={{ background: 'var(--crema)', padding: 'clamp(48px,6vw,80px) clamp(24px,5vw,40px)' }}>
+      <section style={{ background: 'var(--off-white)', padding: 'clamp(48px,6vw,80px) clamp(24px,5vw,40px)' }}>
         <div style={{ maxWidth: 1200, margin: '0 auto' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 40 }}>
             <span style={{ display: 'block', width: 40, height: 1, background: '#5A4A2A' }} aria-hidden="true" />
@@ -504,9 +520,9 @@ export default function Servicios() {
             <span style={{ flex: 1, height: 1, background: 'rgba(90,74,42,0.15)' }} aria-hidden="true" />
           </div>
 
-          <div className="reveal" style={{ borderRadius: 20, overflow: 'hidden', border: '1px solid var(--arena)' }}>
+          <div className="reveal" style={{ borderRadius: 20, overflow: 'hidden', border: '1px solid var(--arena)', maxWidth: 860, margin: '0 auto' }}>
             <div style={{ height: 4, background: 'linear-gradient(90deg, #4A5E2A, #C4844A)' }} />
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 360px), 1fr))', gap: 0 }}>
+            <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', gap: 0 }}>
               {/* Texto */}
               <div style={{ padding: 'clamp(32px,4vw,48px)', display: 'flex', flexDirection: 'column', gap: 18 }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
@@ -669,6 +685,7 @@ function ServicesGroup({
   waBase: string
   reverse?: boolean
 }) {
+  const isMobile = useIsMobile()
   return (
     <section style={{ background: sectionBg, padding: 'clamp(48px,6vw,72px) clamp(24px,5vw,40px)' }}>
       <div style={{ maxWidth: 1200, margin: '0 auto' }}>
@@ -679,7 +696,7 @@ function ServicesGroup({
           <span style={{ flex: 1, height: 1, background: accent, opacity: 0.2 }} aria-hidden="true" />
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 380px), 1fr))', gap: 20 }}>
+        <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', gap: 20 }}>
           {services.map((svc, i) => (
             <ServiceCard
               key={svc.id}
@@ -719,6 +736,9 @@ function ServiceCard({
   locale: 'es' | 'en'
   waBase: string
 }) {
+  const [expanded, setExpanded] = useState(false)
+  const isMobile = useIsMobile()
+  const showFull = !isMobile || expanded
   const href = svc.ctaHref
     ? svc.ctaHref
     : `https://wa.me/${waBase}?text=${encodeURIComponent(
@@ -731,12 +751,13 @@ function ServiceCard({
 
   const cardStyle: React.CSSProperties = {
     background: bg,
-    border: `1px solid ${accent}20`,
+    border: `1px solid ${accent}25`,
     borderRadius: 20,
     overflow: 'hidden',
     display: 'flex',
     flexDirection: 'column',
     transition: 'transform 0.22s, box-shadow 0.22s',
+    boxShadow: '0 4px 24px rgba(42,31,14,0.09)',
   }
 
   return (
@@ -779,18 +800,37 @@ function ServiceCard({
         {/* Headline */}
         <p style={{ fontSize: 13, fontWeight: 600, color: accent, fontFamily: 'var(--sans)', margin: 0, lineHeight: 1.4 }}>{svc.headline}</p>
 
-        {/* Desc */}
-        <p style={{ fontSize: 13.5, lineHeight: 1.75, color: '#5A4A2A', fontFamily: 'var(--sans)', margin: 0, flex: 1 }}>{svc.desc}</p>
+        {/* Desc — oculto en mobile hasta expandir (CSS media query + expanded class) */}
+        <p className={`service-desc${expanded ? ' expanded' : ''}`} style={{ fontSize: 13.5, lineHeight: 1.75, color: '#5A4A2A', fontFamily: 'var(--sans)', margin: 0 }}>{svc.desc}</p>
 
-        {/* Bullets */}
+        {/* Bullets — todos ocultos en mobile hasta expandir */}
         <ul style={{ display: 'flex', flexDirection: 'column', gap: 8, margin: 0, padding: 0, listStyle: 'none' }}>
           {svc.bullets.map((b) => (
-            <li key={b} style={{ display: 'flex', alignItems: 'flex-start', gap: 10, fontSize: 13, color: '#5A4A2A', fontFamily: 'var(--sans)' }}>
+            <li key={b} className={`service-bullet${expanded ? ' expanded' : ''}`} style={{ display: 'flex', alignItems: 'flex-start', gap: 10, fontSize: 13, color: '#5A4A2A', fontFamily: 'var(--sans)' }}>
               <span style={{ width: 6, height: 6, borderRadius: '50%', background: accent, flexShrink: 0, marginTop: 5 }} aria-hidden="true" />
               {b}
             </li>
           ))}
         </ul>
+
+        {/* Leer más — solo mobile via CSS, visible siempre si >2 bullets */}
+        {svc.bullets.length > 2 && (
+          <button
+            onClick={() => setExpanded(v => !v)}
+            className="service-readmore"
+            style={{
+              background: 'none', border: 'none', cursor: 'pointer',
+              color: accent, fontFamily: 'var(--sans)',
+              fontSize: 12, fontWeight: 600, letterSpacing: '0.5px',
+              padding: '2px 0', alignSelf: 'flex-start',
+              textDecoration: 'underline', textDecorationColor: `${accent}50`,
+            }}
+          >
+            {expanded
+              ? (locale === 'en' ? '↑ See less' : '↑ Ver menos')
+              : (locale === 'en' ? '↓ Read more' : '↓ Leer más')}
+          </button>
+        )}
 
         {/* CTA — botón outline con el accent de cada tarjeta */}
         {isExternal ? (

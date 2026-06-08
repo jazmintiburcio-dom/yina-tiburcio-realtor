@@ -9,7 +9,7 @@ import { useIsMobile } from '@/lib/useIsMobile'
 const PAGE = {
   es: {
     hero: {
-      eyebrow: 'Contacto · Contact',
+      eyebrow: 'Contacto',
       h1: 'Hablemos sobre tus objetivos inmobiliarios',
       body: 'Comprar, vender o alquilar una propiedad es una decisión importante. Estoy aquí para responder tus preguntas y ayudarte a dar el siguiente paso con confianza.',
       trust: [
@@ -74,7 +74,7 @@ const PAGE = {
   },
   en: {
     hero: {
-      eyebrow: 'Contact · Contacto',
+      eyebrow: 'Contact',
       h1: "Let's talk about your real estate goals",
       body: 'Buying, selling, or renting a property is a major decision. I\'m here to answer your questions and help you take the next step with confidence.',
       trust: [
@@ -205,7 +205,7 @@ export default function Contacto() {
             background: 'var(--ceiba-dark)',
             display: 'flex',
             alignItems: 'center',
-            padding: 'clamp(48px,7vw,80px) clamp(32px,5vw,64px)',
+            padding: 'clamp(48px,7vw,80px) clamp(8px,1vw,16px) clamp(48px,7vw,80px) clamp(80px,12vw,160px)',
             position: 'relative',
             zIndex: 1,
             order: isMobile ? 2 : 1,
@@ -262,8 +262,8 @@ export default function Contacto() {
         </div>
 
         {/* Columna derecha — Foto Yina completa */}
-        <div style={{ background: 'var(--ceiba-dark)', display: 'flex', alignItems: 'flex-end', justifyContent: 'center', overflow: 'hidden', padding: isMobile ? 'clamp(24px,5vw,40px) clamp(24px,5vw,40px) 0' : '0 clamp(24px,4vw,56px)', order: isMobile ? 1 : 2 }}>
-          <div style={{ position: 'relative', width: '100%', maxWidth: 420, aspectRatio: '3/4' }}>
+        <div style={{ background: 'var(--ceiba-dark)', display: 'flex', alignItems: 'flex-end', justifyContent: 'center', overflow: 'hidden', padding: isMobile ? 'clamp(24px,5vw,40px) clamp(32px,5vw,64px) 0' : 0, order: isMobile ? 1 : 2 }}>
+          <div style={{ position: 'relative', width: '100%', maxWidth: 460, aspectRatio: '3/4', marginRight: isMobile ? 0 : 'clamp(32px,4vw,64px)', marginLeft: 0 }}>
             <Image
               src="/images/yina-contact.png"
               alt="Yina Tiburcio — Realtor disponible para ayudarte"
@@ -570,24 +570,24 @@ export default function Contacto() {
         </div>
       </section>
 
-      {/* ── CTA FINAL — fondo Ceiba oscuro ───────────────── */}
-      <section style={{ background: 'var(--ceiba-dark)', padding: 'clamp(64px,8vw,96px) clamp(24px,5vw,40px)', textAlign: 'center' }}>
+      {/* ── CTA FINAL — fondo lino (distinto al footer ceiba-dark y a la sección cta2 ceiba) ─ */}
+      <section style={{ background: 'var(--lino)', padding: 'clamp(64px,8vw,96px) clamp(24px,5vw,40px)', textAlign: 'center' }}>
         <div style={{ maxWidth: 640, margin: '0 auto' }}>
           <div className="reveal" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 12, marginBottom: 24 }}>
-            <span style={{ display: 'block', width: 28, height: 1, background: '#F5D13A' }} aria-hidden="true" />
-            <span style={{ fontSize: 10, fontWeight: 600, letterSpacing: '3px', textTransform: 'uppercase', color: '#F5D13A', fontFamily: 'var(--sans)' }}>{c.ctaFinal.eyebrow}</span>
-            <span style={{ display: 'block', width: 28, height: 1, background: '#F5D13A' }} aria-hidden="true" />
+            <span style={{ display: 'block', width: 28, height: 1, background: 'var(--canela)' }} aria-hidden="true" />
+            <span style={{ fontSize: 10, fontWeight: 600, letterSpacing: '3px', textTransform: 'uppercase', color: 'var(--canela)', fontFamily: 'var(--sans)' }}>{c.ctaFinal.eyebrow}</span>
+            <span style={{ display: 'block', width: 28, height: 1, background: 'var(--canela)' }} aria-hidden="true" />
           </div>
 
           <h2
             className="reveal d2"
-            style={{ fontFamily: 'var(--serif)', fontWeight: 300, fontSize: 'clamp(32px,4vw,52px)', color: '#FBF6EC', lineHeight: 1.05, margin: '0 0 20px' }}
+            style={{ fontFamily: 'var(--serif)', fontWeight: 300, fontSize: 'clamp(32px,4vw,52px)', color: 'var(--tierra)', lineHeight: 1.05, margin: '0 0 20px' }}
           >
             {c.ctaFinal.h2}{' '}
-            <em style={{ color: '#F5D13A', fontStyle: 'italic' }}>{c.ctaFinal.h2em}</em>
+            <em style={{ color: 'var(--ceiba)', fontStyle: 'italic' }}>{c.ctaFinal.h2em}</em>
           </h2>
 
-          <p className="reveal d3" style={{ fontSize: 15, lineHeight: 1.8, color: 'rgba(251,246,236,0.75)', fontFamily: 'var(--sans)', marginBottom: 36 }}>
+          <p className="reveal d3" style={{ fontSize: 15, lineHeight: 1.8, color: 'var(--gris)', fontFamily: 'var(--sans)', marginBottom: 36 }}>
             {c.ctaFinal.body}
           </p>
 
@@ -595,9 +595,9 @@ export default function Contacto() {
             <a
               href="#"
               onClick={e => { e.preventDefault(); document.querySelector('input[name="name"]')?.scrollIntoView({ behavior: 'smooth', block: 'center' }) }}
-              style={{ display: 'inline-flex', alignItems: 'center', gap: 10, background: '#F5D13A', color: '#2A1F0E', fontSize: 12, fontWeight: 700, letterSpacing: '1px', padding: '16px 40px', borderRadius: 32, textDecoration: 'none', boxShadow: '0 8px 32px rgba(245,209,58,0.25)', transition: 'transform 0.2s, box-shadow 0.2s' }}
-              onMouseEnter={e => { const el = e.currentTarget; el.style.transform = 'translateY(-2px)'; el.style.boxShadow = '0 14px 40px rgba(245,209,58,0.4)' }}
-              onMouseLeave={e => { const el = e.currentTarget; el.style.transform = ''; el.style.boxShadow = '0 8px 32px rgba(245,209,58,0.25)' }}
+              style={{ display: 'inline-flex', alignItems: 'center', gap: 10, background: 'var(--ceiba)', color: '#FBF6EC', fontSize: 12, fontWeight: 700, letterSpacing: '1px', padding: '16px 40px', borderRadius: 32, textDecoration: 'none', boxShadow: '0 8px 32px rgba(74,94,42,0.2)', transition: 'transform 0.2s, box-shadow 0.2s' }}
+              onMouseEnter={e => { const el = e.currentTarget; el.style.transform = 'translateY(-2px)'; el.style.boxShadow = '0 14px 40px rgba(74,94,42,0.35)' }}
+              onMouseLeave={e => { const el = e.currentTarget; el.style.transform = ''; el.style.boxShadow = '0 8px 32px rgba(74,94,42,0.2)' }}
             >
               {c.ctaFinal.btn} ↑
             </a>

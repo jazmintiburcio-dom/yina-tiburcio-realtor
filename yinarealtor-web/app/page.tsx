@@ -1,5 +1,5 @@
 'use client'
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import Script from 'next/script'
@@ -328,6 +328,19 @@ export default function Home() {
   const [openFaq, setOpenFaq] = useState<number | null>(null)
   const c = PAGE[locale]
   const isMobile = useIsMobile()
+  const videoRef = useRef<HTMLVideoElement>(null)
+
+  useEffect(() => {
+    const handleHashChange = () => {
+      if (window.location.hash === '#sobre-yina') {
+        videoRef.current?.play()
+        document.getElementById('sobre-yina')?.scrollIntoView({ behavior: 'smooth' })
+      }
+    }
+    handleHashChange()
+    window.addEventListener('hashchange', handleHashChange)
+    return () => window.removeEventListener('hashchange', handleHashChange)
+  }, [])
 
   return (
     <>
@@ -339,7 +352,7 @@ export default function Home() {
       />
 
       {/* ── HERO ─────────────────────────────────────────── */}
-      <section style={{ position: 'relative', minHeight: '100vh', marginTop: 'calc(-1 * var(--nav-h))', paddingTop: 'var(--nav-h)', overflow: 'hidden', display: 'flex', alignItems: 'center', background: '#1a2810' }}>
+      <section style={{ position: 'relative', minHeight: isMobile ? '65vh' : '100vh', marginTop: 'calc(-1 * var(--nav-h))', paddingTop: 'var(--nav-h)', overflow: 'hidden', display: 'flex', alignItems: 'center', background: '#1a2810' }}>
         <video
           autoPlay muted loop playsInline
           style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', zIndex: 0 }}
@@ -348,7 +361,7 @@ export default function Home() {
         <div className="hero-overlay" />
         <div className="hero-sol-line" />
 
-        <div style={{ position: 'relative', zIndex: 5, width: '100%', maxWidth: 1280, margin: '0 auto', padding: 'clamp(48px,7vw,96px) clamp(24px,5vw,64px)', display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', gap: 32, minHeight: isMobile ? 'clamp(480px,90vh,700px)' : 'calc(100vh - var(--nav-h))' }}>
+        <div style={{ position: 'relative', zIndex: 5, width: '100%', maxWidth: 1280, margin: '0 auto', padding: isMobile ? 'clamp(32px,5vw,64px) clamp(20px,5vw,48px)' : 'clamp(48px,7vw,96px) clamp(24px,5vw,64px)', display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', gap: 32, minHeight: isMobile ? '55vh' : 'calc(100vh - var(--nav-h))' }}>
 
           {/* Hero text */}
           <div style={{ maxWidth: 510, paddingBottom: 'clamp(56px,7vw,88px)' }}>
@@ -385,12 +398,12 @@ export default function Home() {
       </section>
 
       {/* ── STATS BAR ────────────────────────────────────── */}
-      <div style={{ background: 'var(--sol)', padding: '24px clamp(20px,5vw,64px)' }}>
-        <div style={{ maxWidth: 1280, margin: '0 auto', display: 'grid', gridTemplateColumns: isMobile ? 'repeat(2,1fr)' : 'repeat(4,1fr)', gap: 1, background: 'rgba(42,31,14,.12)', borderRadius: 6, overflow: 'hidden' }}>
+      <div style={{ background: 'var(--sol)', padding: isMobile ? '16px 20px' : '24px clamp(20px,5vw,64px)' }}>
+        <div style={{ maxWidth: isMobile ? 340 : 1280, margin: '0 auto', display: 'grid', gridTemplateColumns: isMobile ? 'repeat(2,1fr)' : 'repeat(4,1fr)', gap: 1, background: 'rgba(42,31,14,.12)', borderRadius: 8, overflow: 'hidden' }}>
           {c.stats.map(s => (
-            <div key={s.num} style={{ background: 'var(--sol)', padding: '20px 24px', textAlign: 'center' }}>
-              <div style={{ fontFamily: 'var(--serif)', fontSize: 36, fontWeight: 700, color: 'var(--tierra)', lineHeight: 1 }}>{s.num}</div>
-              <div style={{ fontSize: 10, fontWeight: 500, letterSpacing: 2, textTransform: 'uppercase', color: 'rgba(42,31,14,.6)', marginTop: 5 }}>{s.label}</div>
+            <div key={s.num} style={{ background: 'var(--sol)', padding: isMobile ? '10px 8px' : '20px 24px', textAlign: 'center' }}>
+              <div style={{ fontFamily: 'var(--serif)', fontSize: isMobile ? 20 : 36, fontWeight: 700, color: 'var(--tierra)', lineHeight: 1 }}>{s.num}</div>
+              <div style={{ fontSize: isMobile ? 8 : 10, fontWeight: 500, letterSpacing: isMobile ? 1 : 2, textTransform: 'uppercase', color: 'rgba(42,31,14,.6)', marginTop: isMobile ? 3 : 5 }}>{s.label}</div>
             </div>
           ))}
         </div>
@@ -407,7 +420,10 @@ export default function Home() {
             </p>
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(240px,1fr))', gap: 24 }}>
-            {SERVICES.map((svc, i) => (
+            {SERVICES.map((svc, i) => {
+              const cardBgs = ['#F0E8D4', '#E8F0D8', '#E8DCC4', '#FAF7F2']
+              const cardBorders = ['var(--arena)', 'rgba(74,94,42,0.15)', 'rgba(196,132,74,0.2)', 'var(--arena)']
+              return (
               <div
                 key={svc.title.es}
                 className={`svc-item reveal d${i + 1}`}
@@ -415,8 +431,8 @@ export default function Home() {
                   position: 'relative',
                   padding: 32,
                   borderRadius: 16,
-                  background: 'var(--off-white)',
-                  border: svc.canelaBorder ? '2px solid #C4844A' : '1px solid var(--arena)',
+                  background: cardBgs[i % 4],
+                  border: `1px solid ${cardBorders[i % 4]}`,
                   transition: 'transform 0.22s, box-shadow 0.22s',
                 }}
                 onMouseEnter={e => {
@@ -444,7 +460,8 @@ export default function Home() {
                   {c.services.more}
                 </Link>
               </div>
-            ))}
+              )
+            })}
           </div>
           <div style={{ textAlign: 'center', marginTop: 32 }}>
             <Link href="/servicios" className="btn btn-ceiba">{c.services.cta}</Link>
@@ -458,13 +475,14 @@ export default function Home() {
           <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', gap: 'clamp(40px,6vw,80px)', alignItems: 'center' }}>
 
             {/* Video — plays once, no loop */}
-            <div className="reveal" style={{ position: 'relative' }}>
+            <div className="reveal" style={{ position: 'relative', overflow: isMobile ? 'visible' : 'visible' }}>
               <video
+                ref={videoRef}
                 autoPlay muted playsInline
-                style={{ width: '100%', maxWidth: isMobile ? '100%' : 460, aspectRatio: '3/4', objectFit: 'cover', borderRadius: 4, display: 'block' }}
+                style={{ width: '100%', maxWidth: isMobile ? '100%' : 460, aspectRatio: isMobile ? '4/3' : '3/4', objectFit: 'cover', borderRadius: 4, display: 'block' }}
                 src="/videos/bio.mp4"
               />
-              <div style={{ position: 'absolute', bottom: -14, right: -14, background: 'var(--ceiba)', padding: '12px 16px', borderRadius: 8, textAlign: 'center', boxShadow: '0 6px 20px rgba(74,94,42,.35)' }}>
+              <div style={{ position: 'absolute', bottom: isMobile ? 12 : -14, right: isMobile ? 12 : -14, background: 'var(--ceiba)', padding: '10px 14px', borderRadius: 8, textAlign: 'center', boxShadow: '0 6px 20px rgba(74,94,42,.35)' }}>
                 <div style={{ fontFamily: 'var(--serif)', fontSize: 22, fontWeight: 700, color: '#fff', lineHeight: 1 }}>15+</div>
                 <div style={{ fontSize: 8, fontWeight: 600, letterSpacing: 2, textTransform: 'uppercase', color: 'rgba(255,255,255,.7)', marginTop: 3 }}>{c.bio.badgeSub}</div>
               </div>
@@ -613,7 +631,7 @@ export default function Home() {
       </section>
 
       {/* ── TESTIMONIOS ───────────────────────────────────── */}
-      <section className="section" style={{ background: 'var(--crema)' }}>
+      <section className="section" style={{ background: 'var(--lino)' }}>
         <div className="section-inner">
           <div className="s-head center reveal">
             <div className="eyebrow" style={{ justifyContent: 'center', marginBottom: 12 }}>{c.testi.eyebrow}</div>
@@ -625,11 +643,11 @@ export default function Home() {
               { q: 'Encontrar una vivienda puede ser estresante, pero contar con alguien que hablara nuestro idioma y nos guiara hizo toda la diferencia.', name: 'María & José L.', loc: 'Providence, RI', typeKey: 'inq' as const, init: 'M' },
               { q: 'Profesional, organizada y siempre disponible para orientarnos. Su apoyo nos permitió avanzar con tranquilidad durante todo el proceso.', name: 'Carlos Méndez', loc: 'Pawtucket, RI', typeKey: 'prop' as const, init: 'C' },
             ].map((testi, i) => (
-              <div key={i} className={`testi-card reveal d${i + 1}`}>
+              <div key={i} className={`testi-card reveal d${i + 1}`} style={isMobile ? { padding: '16px' } : {}}>
                 <div style={{ display: 'flex', gap: 3, marginBottom: 13 }}>
                   {'★★★★★'.split('').map((_, j) => <span key={j} style={{ color: 'var(--sol-dark)', fontSize: 14 }}>★</span>)}
                 </div>
-                <p style={{ fontFamily: 'var(--serif)', fontSize: 16, fontStyle: 'italic', fontWeight: 300, color: 'var(--tierra)', lineHeight: 1.65, marginBottom: 17 }}>&ldquo;{testi.q}&rdquo;</p>
+                <p style={{ fontFamily: 'var(--serif)', fontSize: isMobile ? 13 : 16, fontStyle: 'italic', fontWeight: 300, color: 'var(--tierra)', lineHeight: 1.65, marginBottom: isMobile ? 12 : 17 }}>&ldquo;{testi.q}&rdquo;</p>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
                   <div style={{ width: 36, height: 36, borderRadius: '50%', background: 'var(--sol-pale)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'var(--serif)', fontSize: 14, fontWeight: 600, color: 'var(--ceiba)', flexShrink: 0, border: '1.5px solid var(--sol)' }}>{testi.init}</div>
                   <div>
