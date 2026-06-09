@@ -1,11 +1,18 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Image from 'next/image'
 
 export default function Gallery({ src, gallery, address }: { src: string; gallery: string[]; address: string }) {
   const all = [src, ...gallery]
   const [current, setCurrent] = useState(0)
+  const [isMobile, setIsMobile] = useState(false)
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768)
+    check()
+    window.addEventListener('resize', check)
+    return () => window.removeEventListener('resize', check)
+  }, [])
   const prev = () => setCurrent(i => (i - 1 + all.length) % all.length)
   const next = () => setCurrent(i => (i + 1) % all.length)
 
@@ -49,8 +56,8 @@ export default function Gallery({ src, gallery, address }: { src: string; galler
         </span>
       </div>
 
-      {/* Miniaturas */}
-      {all.length > 1 && (
+      {/* Miniaturas — ocultas en mobile */}
+      {all.length > 1 && !isMobile && (
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(72px, 1fr))', gap: 8 }}>
           {all.map((img, i) => (
             <button
