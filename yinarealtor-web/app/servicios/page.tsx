@@ -338,7 +338,7 @@ export default function Servicios() {
             <div className="reveal" style={{ position: 'relative', display: isMobile ? 'none' : 'block' }}>
               <div style={{ position: 'relative', borderRadius: 16, overflow: 'hidden', boxShadow: '0 28px 72px rgba(42,31,14,0.24)', aspectRatio: '4/5' }}>
                 <Image
-                  src="/images/Services/Services_Heroe_1.png"
+                  src="/images/Services/Services_Heroe_1.webp"
                   alt="Yina Tiburcio con cliente revisando documentos"
                   fill
                   priority
@@ -397,7 +397,7 @@ export default function Servicios() {
               {isMobile && (
                 <div style={{ position: 'relative', width: '100%', maxWidth: 380, margin: '12px auto 0', aspectRatio: '3/4' }}>
                   <Image
-                    src="/images/Services/Services_Heroe_1.png"
+                    src="/images/Services/Services_Heroe_1.webp"
                     alt="Yina Tiburcio con cliente revisando documentos"
                     fill
                     style={{ objectFit: 'contain', objectPosition: 'center bottom' }}
@@ -412,7 +412,7 @@ export default function Servicios() {
               {/* Foto 2 — notablemente más pequeña */}
               <div style={{ position: 'relative', borderRadius: 14, overflow: 'hidden', boxShadow: '0 16px 40px rgba(42,31,14,0.16)', aspectRatio: '3/4' }}>
                 <Image
-                  src="/images/Services/Services_Heroe_2.png"
+                  src="/images/Services/Services_Heroe_2.webp"
                   alt="Yina Tiburcio revisando documentos"
                   fill
                   style={{ objectFit: 'cover', objectPosition: 'center top' }}

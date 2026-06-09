@@ -265,7 +265,7 @@ export default function Contacto() {
         <div style={{ background: 'var(--ceiba-dark)', display: 'flex', alignItems: 'flex-end', justifyContent: 'center', overflow: 'hidden', padding: isMobile ? 'clamp(24px,5vw,40px) clamp(32px,5vw,64px) 0' : 0, order: isMobile ? 1 : 2 }}>
           <div style={{ position: 'relative', width: '100%', maxWidth: 460, aspectRatio: '3/4', marginRight: isMobile ? 0 : 'clamp(32px,4vw,64px)', marginLeft: 0 }}>
             <Image
-              src="/images/yina-contact.png"
+              src="/images/yina-contact.webp"
               alt="Yina Tiburcio — Realtor disponible para ayudarte"
               fill
               style={{ objectFit: 'contain', objectPosition: 'center bottom' }}

@@ -212,7 +212,7 @@ export default function Propiedades() {
         {/* Foto Providence */}
         <div style={{ position: 'absolute', inset: 0, zIndex: 0 }}>
           <Image
-            src="/images/propiedades-hero.png"
+            src="/images/propiedades-hero.webp"
             alt="Providence, Rhode Island — arquitectura colonial"
             fill
             style={{ objectFit: 'cover', objectPosition: 'center 40%' }}
