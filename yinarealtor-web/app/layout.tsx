@@ -12,8 +12,8 @@ export const metadata: Metadata = {
   title: 'Yina Tiburcio · Realtor® · Rhode Island',
   description: 'Agente inmobiliaria bilingüe en Rhode Island. Compra, vende y renta con Yina Tiburcio. Hablamos español.',
   icons: {
-    icon: '/image/favicon.png',
-    apple: '/image/favicon.png',
+    icon: '/images/favicon.webp',
+    apple: '/images/favicon.webp',
   },
   metadataBase: new URL(SITE_URL),
   openGraph: {
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     siteName: 'Yina Tiburcio Real Estate',
     images: [
       {
-        url: '/images/og-image.png',
+        url: '/images/og-image.webp',
         width: 1200,
         height: 630,
         alt: 'Yina Tiburcio · Realtor® · Rhode Island',
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Yina Tiburcio · Realtor® · Rhode Island',
     description: 'Tu Realtor bilingüe en Rhode Island. Compra, vende y renta con respaldo profesional y atención personalizada en español.',
-    images: ['/images/og-image.png'],
+    images: ['/images/og-image.webp'],
   },
 }
 

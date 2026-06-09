@@ -598,10 +598,10 @@ export default function Home() {
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill,minmax(280px,1fr))', gap: 20 }}>
             {[
-            { src: '/images/propiedades/23-concannon-st/main.jpg', type: 'renta', price: '$2,700', addr: '23 Concannon St', city: 'Providence, RI 02904', beds: 3, baths: 2, spec: 'masterSuite', href: '/propiedades/23-concannon-st' },
-              { src: '/images/propiedades/37-humes-st/main.jpg', type: 'renta', price: '$1,950', addr: '37 Humes St', city: 'Providence, RI 02907', beds: 2, baths: 1, spec: 'gasIncluido', href: '/propiedades/37-humes-st' },
-              { src: '/images/propiedades/227-dexter-st/main.jpg', type: 'renta', price: '$2,500', addr: '227 Dexter St', city: 'Central Falls, RI 02863', beds: 3, baths: 1, spec: 'dosParqueos', href: '/propiedades/227-dexter-st' },
-              { src: '/images/propiedades/86-cooke-st/main.jpeg', type: 'venta', price: '$489,000', addr: '86 Cooke St', city: 'Providence, RI 02906', beds: 5, baths: 3, spec: 'dosParqueos', href: '/propiedades/86-cooke-st' },
+            { src: '/images/propiedades/23-concannon-st/main.webp', type: 'renta', price: '$2,700', addr: '23 Concannon St', city: 'Providence, RI 02904', beds: 3, baths: 2, spec: 'masterSuite', href: '/propiedades/23-concannon-st' },
+              { src: '/images/propiedades/37-humes-st/main.webp', type: 'renta', price: '$1,950', addr: '37 Humes St', city: 'Providence, RI 02907', beds: 2, baths: 1, spec: 'gasIncluido', href: '/propiedades/37-humes-st' },
+              { src: '/images/propiedades/227-dexter-st/main.webp', type: 'renta', price: '$2,500', addr: '227 Dexter St', city: 'Central Falls, RI 02863', beds: 3, baths: 1, spec: 'dosParqueos', href: '/propiedades/227-dexter-st' },
+              { src: '/images/propiedades/86-cooke-st/main.webp', type: 'venta', price: '$489,000', addr: '86 Cooke St', city: 'Providence, RI 02906', beds: 5, baths: 3, spec: 'dosParqueos', href: '/propiedades/86-cooke-st' },
             ].map((p, i) => {
               const badge = p.type === 'renta' ? c.props.badgeRenta : c.props.badgeVenta
               return (
