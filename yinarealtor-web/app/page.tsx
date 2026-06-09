@@ -384,7 +384,7 @@ export default function Home() {
           <div className="reveal d3" style={{ alignSelf: 'flex-end', marginBottom: 'clamp(32px,5vw,56px)', background: 'rgba(255,255,255,.94)', backdropFilter: 'blur(14px)', border: '1px solid rgba(255,255,255,.5)', borderRadius: 16, padding: '20px 22px', display: isMobile ? 'none' : 'flex', flexDirection: 'column', alignItems: 'center', gap: 10, boxShadow: '0 12px 48px rgba(0,0,0,.18)', minWidth: 220, maxWidth: 270, textAlign: 'center' }}>
             {/* Circular photo */}
             <div style={{ width: 72, height: 72, borderRadius: '50%', border: '2.5px solid #F5D13A', padding: 2, overflow: 'hidden', background: 'var(--sol-pale)', flexShrink: 0 }}>
-              <Image src="/images/hero-bio.png" alt="Yina Tiburcio" width={68} height={68} style={{ width: '100%', height: '100%', borderRadius: '50%', objectFit: 'cover', objectPosition: 'center top' }} />
+              <Image src="/images/hero-bio.webp" alt="Yina Tiburcio" width={68} height={68} style={{ width: '100%', height: '100%', borderRadius: '50%', objectFit: 'cover', objectPosition: 'center top' }} />
             </div>
             {/* Name */}
             <div style={{ fontFamily: 'var(--serif)', fontSize: 17, fontWeight: 600, color: 'var(--tierra)', lineHeight: 1.2 }}>Yina Tiburcio</div>
