@@ -343,9 +343,7 @@ export default function Servicios() {
                   fill
                   priority
                   style={{ objectFit: 'cover', objectPosition: 'center top' }}
-                  sizes="380px"
-                  priority
-                />
+                  sizes="380px"                                  />
                 <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(42,31,14,0.45) 0%, transparent 55%)' }} />
                 <div style={{ position: 'absolute', bottom: 20, left: 20, background: 'rgba(74,94,42,0.92)', backdropFilter: 'blur(8px)', borderRadius: 12, padding: '8px 14px' }}>
                   <p style={{ color: '#FBF6EC', fontSize: 13, fontWeight: 600, fontFamily: 'var(--sans)', margin: 0 }}>Real Broker®</p>
