@@ -43,7 +43,7 @@ const PAGE = {
       p3: 'Ya sea que estés buscando tu primera vivienda, quieras vender una propiedad o necesites orientación para prepararte financieramente antes de comprar, estoy aquí para ayudarte a avanzar con seguridad hacia tus metas.',
       lang: 'Atención disponible en español e inglés.',
       cta: 'Conversemos →',
-      badgeSub: 'Años de exp.',
+      badgeSub: 'Exp. Negocios',
     },
     areas: {
       eyebrow: 'Áreas Atendidas',
@@ -103,6 +103,8 @@ const PAGE = {
       { q: '¿Qué documentos necesito para rentar una propiedad en Rhode Island?', a: 'Generalmente necesitas identificación oficial vigente, comprobantes de ingresos y completar la solicitud de alquiler. Te acompañamos para presentar una postulación sólida.' },
       { q: '¿Puedo recibir ayuda si mi crédito es limitado?', a: 'Sí, te acompañamos durante la búsqueda y analizamos alternativas como depósitos adicionales o cofirmantes según tu situación.' },
       { q: '¿Cuánto cuesta una consulta inicial?', a: 'La consulta inicial es 100% gratuita y sin compromisos. Agéndala por WhatsApp o el calendario de la web.' },
+      { q: '¿Qué documentos necesito para rentar una propiedad?', a: 'Para iniciar el proceso de renta necesitas identificación válida (pasaporte o licencia de conducir) y comprobante de ingresos o carta de empleo. Como parte del proceso estándar de aprobación se realiza un background check — una verificación de antecedentes que solicita el propietario para proteger su inversión. Es un paso normal y transparente. Yina te explica exactamente qué incluye y cómo prepararte para que llegues con todo en orden.' },
+      { q: '¿Tienen algún costo las visitas para ver una propiedad?', a: 'No. Mostrar una propiedad no tiene ningún costo para el comprador o interesado. Solo necesitas agendar tu visita con anticipación para coordinar el horario. Escríbenos por WhatsApp y con gusto te organizamos la cita.' },
     ],
   },
   en: {
@@ -139,7 +141,7 @@ const PAGE = {
       p3: "Whether you're looking for your first home, want to sell a property, or need guidance to prepare financially before buying, I'm here to help you move forward confidently toward your goals.",
       lang: 'Service available in Spanish and English.',
       cta: "Let's talk →",
-      badgeSub: 'Years exp.',
+      badgeSub: 'Bus. Exp.',
     },
     areas: {
       eyebrow: 'Areas Served',
@@ -199,6 +201,8 @@ const PAGE = {
       { q: 'What documents do I need to rent a property in Rhode Island?', a: "You'll generally need valid official ID, proof of income, and completion of the rental application. We accompany you to put together a strong application." },
       { q: 'Can I get help if my credit is limited?', a: 'Yes, we accompany you throughout the search and analyze alternatives such as additional deposits or co-signers depending on your situation.' },
       { q: 'How much does an initial consultation cost?', a: 'The initial consultation is 100% free and no-commitment. Schedule it via WhatsApp or the website calendar.' },
+      { q: 'What documents do I need to rent a property?', a: "To start the rental process you'll need a valid ID (passport or driver's license) and proof of income or an employment letter. A background check is a standard part of the approval process — it's requested by the landlord to protect their investment. It's a normal, transparent step. Yina will walk you through exactly what it includes and how to be prepared." },
+      { q: 'Is there a fee to visit or tour a property?', a: "No. Showing a property is completely free for buyers and interested renters. You just need to schedule your visit in advance so we can coordinate the time. Message us on WhatsApp and we'll set it up." },
     ],
   },
 } as const
@@ -243,6 +247,14 @@ const FAQS = [
     q: '¿Cuánto cuesta una consulta inicial?',
     a: 'La consulta inicial es 100% gratuita y sin compromisos. Agéndala por WhatsApp o el calendario de la web.',
   },
+  {
+    q: '¿Qué documentos necesito para rentar una propiedad?',
+    a: 'Para iniciar el proceso de renta necesitas identificación válida (pasaporte o licencia de conducir) y comprobante de ingresos o carta de empleo. Como parte del proceso estándar de aprobación se realiza un background check — una verificación de antecedentes que solicita el propietario para proteger su inversión. Es un paso normal y transparente. Yina te explica exactamente qué incluye y cómo prepararte para que llegues con todo en orden.',
+  },
+  {
+    q: '¿Tienen algún costo las visitas para ver una propiedad?',
+    a: 'No. Mostrar una propiedad no tiene ningún costo para el comprador o interesado. Solo necesitas agendar tu visita con anticipación para coordinar el horario. Escríbenos por WhatsApp y con gusto te organizamos la cita.',
+  },
 ]
 
 const FAQ_SCHEMA = {
@@ -258,21 +270,11 @@ const FAQ_SCHEMA = {
 /* Bilingual service cards */
 const SERVICES = [
   {
-    icon: Tag,
-    title: { es: 'Vender Propiedad', en: 'Sell Property' },
-    body: {
-      es: 'Cada propiedad tiene una historia y un valor único. Te acompaño para preparar, promocionar y gestionar la venta de tu inmueble de manera estratégica y profesional.',
-      en: 'Every property has a unique story and value. I accompany you in preparing, promoting, and managing the sale of your property strategically and professionally.',
-    },
-    badge: { es: '', en: '' },
-    canelaBorder: false,
-  },
-  {
     icon: HomeIcon,
     title: { es: 'Comprar Casa', en: 'Buy a Home' },
     body: {
-      es: 'Encontrar la propiedad adecuada es mucho más que buscar una casa. Te ayudo a entender tus opciones, conectar con profesionales del proceso y avanzar con confianza hacia la compra de tu hogar.',
-      en: 'Finding the right property is much more than searching for a house. I help you understand your options, connect with the right professionals, and move confidently toward purchasing your home.',
+      es: 'Encontrar la propiedad adecuada es mucho más que buscar una casa. Te ayudo conectándote con las mejores opciones de préstamos y programas de ayuda locales para alcanzar tu meta con seguridad.',
+      en: 'Finding the right property is much more than searching for a house. I help you connect with the best local loan options and assistance programs so you can reach your goal with confidence.',
     },
     badge: { es: 'Popular', en: 'Popular' },
     canelaBorder: false,
@@ -286,6 +288,16 @@ const SERVICES = [
     },
     badge: { es: '', en: '' },
     canelaBorder: true,
+  },
+  {
+    icon: Tag,
+    title: { es: 'Vender Propiedad', en: 'Sell Property' },
+    body: {
+      es: 'Cada propiedad tiene una historia y un valor único. Te acompaño para preparar una negociación estratégica y acompañamiento hasta el cierre.',
+      en: 'Every property has a unique story and value. I guide you through strategic negotiation and support you all the way to closing.',
+    },
+    badge: { es: '', en: '' },
+    canelaBorder: false,
   },
   {
     icon: MessageCircle,
@@ -673,7 +685,7 @@ export default function Home() {
               <div style={{ display: 'flex', flexDirection: 'column', gap: 13, marginBottom: 24 }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 11, fontSize: 13, color: 'var(--tierra)', fontWeight: 500 }}><MapPin size={15} color="var(--canela)" strokeWidth={1.5} style={{ flexShrink: 0 }} /> 1738 Broad St, Cranston, RI</div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 11, fontSize: 13, color: 'var(--tierra)', fontWeight: 500 }}><Phone size={15} color="var(--canela)" strokeWidth={1.5} style={{ flexShrink: 0 }} /> +1 (401) 602-5102</div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 11, fontSize: 13, color: 'var(--tierra)', fontWeight: 500 }}><Mail size={15} color="var(--canela)" strokeWidth={1.5} style={{ flexShrink: 0 }} /> yinatiburcio@gmail.com</div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 11, fontSize: 13, color: 'var(--tierra)', fontWeight: 500 }}><Mail size={15} color="var(--canela)" strokeWidth={1.5} style={{ flexShrink: 0 }} /> yinatiburciorealtor@gmail.com</div>
               </div>
               <a
                 href="https://wa.me/14016025102"
