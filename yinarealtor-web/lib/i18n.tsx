@@ -56,7 +56,7 @@ const content = {
       servicios: 'Servicios',
       links_svc: ['Comprar Casa', 'Vender Propiedad', 'Rentar Propiedad', 'Asesoría'],
       contacto: 'Contacto',
-      rights: '© 2025 Yina Tiburcio · Real Broker · Rhode Island',
+      rights: '© 2025 Yina Tiburcio · Bani Properties · Rhode Island',
       license: 'Licensed Realtor® in Rhode Island',
       disclaimer: 'NNA Certified Loan Signing Agent',
     },
@@ -204,7 +204,7 @@ const content = {
       servicios: 'Services',
       links_svc: ['Buy a Home', 'Sell Property', 'Rent Property', 'Advisory'],
       contacto: 'Contact',
-      rights: '© 2025 Yina Tiburcio · Real Broker · Rhode Island',
+      rights: '© 2025 Yina Tiburcio · Bani Properties · Rhode Island',
       license: 'Licensed Realtor® in Rhode Island',
       disclaimer: 'NNA Certified Loan Signing Agent',
     },
@@ -335,3 +335,4 @@ const content = {
     },
   },
 }
+

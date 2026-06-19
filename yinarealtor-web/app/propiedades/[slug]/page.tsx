@@ -230,7 +230,7 @@ export default function PropiedadPage({ params }: { params: { slug: string } }) 
                 <div className="w-10 h-10 rounded-full flex-shrink-0 flex items-center justify-center text-[#FBF6EC] text-sm font-bold" style={{ background: '#4A5E2A' }} aria-hidden="true">YT</div>
                 <div>
                   <p className="text-xs font-semibold text-[#2A1F0E]" style={{ fontFamily: "'DM Sans', sans-serif" }}>Yina Tiburcio</p>
-                  <p className="text-[10px] text-[#8A7A6A]" style={{ fontFamily: "'DM Sans', sans-serif" }}>Realtor® · Real Broker · Rhode Island</p>
+                  <p className="text-[10px] text-[#8A7A6A]" style={{ fontFamily: "'DM Sans', sans-serif" }}>Realtor® · Bani Properties · Rhode Island</p>
                 </div>
               </div>
             </div>

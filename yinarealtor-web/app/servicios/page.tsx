@@ -25,7 +25,7 @@ const PAGE = {
     trust: [
       { stat: '+15', unit: 'Años', label: 'de Experiencia', desc: 'Trayectoria profesional en negocios y atención al cliente, ofreciendo un trato respetuoso, transparente y personalizado.' },
       { stat: '100%', unit: '', label: 'Bilingüe', desc: 'Comunicación clara y directa en español e inglés para respaldar a toda la comunidad.' },
-      { stat: 'Real', unit: '', label: 'Broker', desc: 'Realtor® activa asociada a Real Broker, combinando conocimiento del mercado local y alcance regional.' },
+      { stat: 'Real', unit: '', label: 'Broker', desc: 'Realtor® activa asociada a Bani Properties, combinando conocimiento del mercado local y alcance regional.' },
       { stat: 'NNA', unit: '', label: 'Certified', desc: 'Notary Public y NNA Certified Loan Signing Agent en Rhode Island, garantizando precisión en cada firma.' },
       { stat: '+50', unit: '', label: 'Clientes · 5★', desc: 'Familias, compradores e inversionistas que han respaldado su futuro con una calificación de 5 estrellas.' },
     ],
@@ -126,7 +126,7 @@ const PAGE = {
       h2em: 'con Yina',
       items: [
         { title: 'Asesoría 100% Bilingüe', desc: 'Te atiendo y te explico cada documento en tu propio idioma (español e inglés) para que firmes con absoluta tranquilidad.' },
-        { title: 'Respaldo Profesional Completo', desc: 'Como Realtor® asociada a Real Broker, combino el conocimiento del mercado local con licencias oficiales de Notary Public y NNA Certified Loan Signing Agent.' },
+        { title: 'Respaldo Profesional Completo', desc: 'Como Realtor® asociada a Bani Properties, combino el conocimiento del mercado local con licencias oficiales de Notary Public y NNA Certified Loan Signing Agent.' },
         { title: 'Compromiso con la Comunidad', desc: 'Orgullosa miembro de NAHREP y creadora de iniciativas que apoyan a las familias y emprendedores locales en Rhode Island.' },
         { title: 'Acompañamiento Humano', desc: 'Creo en las relaciones basadas en la honestidad. Mi meta es que te sientas escuchado de principio a fin, eliminando la jerga técnica confusa.' },
       ],
@@ -158,7 +158,7 @@ const PAGE = {
     trust: [
       { stat: '+15', unit: 'Yrs', label: 'Experience', desc: 'Professional background in business and client service, offering respectful, transparent, and personalized treatment.' },
       { stat: '100%', unit: '', label: 'Bilingual', desc: 'Clear and direct communication in Spanish and English to support the entire community.' },
-      { stat: 'Real', unit: '', label: 'Broker', desc: 'Active Realtor® affiliated with Real Broker, combining local market knowledge with regional reach.' },
+      { stat: 'Real', unit: '', label: 'Broker', desc: 'Active Realtor® affiliated with Bani Properties, combining local market knowledge with regional reach.' },
       { stat: 'NNA', unit: '', label: 'Certified', desc: 'Notary Public and NNA Certified Loan Signing Agent in Rhode Island, ensuring precision at every signing.' },
       { stat: '50+', unit: '', label: 'Clients · 5★', desc: 'Families, buyers, and investors who have trusted us with their future, backed by a 5-star rating.' },
     ],
@@ -259,7 +259,7 @@ const PAGE = {
       h2em: 'with Yina',
       items: [
         { title: '100% Bilingual Service', desc: 'I serve you and explain every document in your own language (Spanish and English) so you can sign with complete peace of mind.' },
-        { title: 'Full Professional Support', desc: 'As a Realtor® affiliated with Real Broker, I combine local market knowledge with official Notary Public and NNA Certified Loan Signing Agent licenses.' },
+        { title: 'Full Professional Support', desc: 'As a Realtor® affiliated with Bani Properties, I combine local market knowledge with official Notary Public and NNA Certified Loan Signing Agent licenses.' },
         { title: 'Community Commitment', desc: 'Proud NAHREP member and creator of initiatives that support local families and entrepreneurs in Rhode Island.' },
         { title: 'Human Accompaniment', desc: 'I believe in relationships built on honesty. My goal is for you to feel heard from start to finish, eliminating confusing technical jargon.' },
       ],
@@ -346,7 +346,7 @@ export default function Servicios() {
                   sizes="380px"                                  />
                 <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(42,31,14,0.45) 0%, transparent 55%)' }} />
                 <div style={{ position: 'absolute', bottom: 20, left: 20, background: 'rgba(74,94,42,0.92)', backdropFilter: 'blur(8px)', borderRadius: 12, padding: '8px 14px' }}>
-                  <p style={{ color: '#FBF6EC', fontSize: 13, fontWeight: 600, fontFamily: 'var(--sans)', margin: 0 }}>Real Broker®</p>
+                  <p style={{ color: '#FBF6EC', fontSize: 13, fontWeight: 600, fontFamily: 'var(--sans)', margin: 0 }}>Bani Properties®</p>
                   <p style={{ color: 'rgba(168,191,120,0.9)', fontSize: 10, fontFamily: 'var(--sans)', margin: 0, marginTop: 2 }}>{c.hero.brokerSub}</p>
                 </div>
               </div>
@@ -928,3 +928,4 @@ function WhyCard({ item, delay }: { item: { title: string; desc: string }; delay
     </div>
   )
 }
+

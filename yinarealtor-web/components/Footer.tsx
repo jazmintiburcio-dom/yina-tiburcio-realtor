@@ -88,7 +88,7 @@ export default function Footer() {
               <h4 style={heading}>{f.contacto}</h4>
               <p style={{ ...link, lineHeight: 1.6, marginBottom: 4 }}>1738 Broad St, Cranston, RI</p>
               <a href="tel:+14016025102" style={link}>+1 (401) 602-5102</a>
-              <a href="mailto:yinatiburciorealtor@gmail.com" style={link}>yinatiburcio@gmail.com</a>
+              <a href="mailto:yinatiburciorealtor@gmail.com" style={link}>yinatiburciorealtor@gmail.com</a>
             </div>
           )}
         </div>
@@ -115,3 +115,4 @@ export default function Footer() {
     </footer>
   )
 }
+

@@ -14,7 +14,7 @@ const PAGE = {
       body: 'Comprar, vender o alquilar una propiedad es una decisión importante. Estoy aquí para responder tus preguntas y ayudarte a dar el siguiente paso con confianza.',
       trust: [
         'Atención en Español e Inglés',
-        'Realtor® — Real Broker',
+        'Realtor® — Bani Properties',
         'Notary Public',
         'NNA Certified Loan Signing Agent',
       ],
@@ -79,7 +79,7 @@ const PAGE = {
       body: 'Buying, selling, or renting a property is a major decision. I\'m here to answer your questions and help you take the next step with confidence.',
       trust: [
         'Service in Spanish and English',
-        'Realtor® — Real Broker',
+        'Realtor® — Bani Properties',
         'Notary Public',
         'NNA Certified Loan Signing Agent',
       ],
@@ -607,3 +607,4 @@ export default function Contacto() {
     </>
   )
 }
+
